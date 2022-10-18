@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Sell</title>
+</head>
+<body>
+
+<label>Sell cards</label>
+
+<div th:each="card : ${cards}">
+    <div th:text="${card.name}"></div>
+    <img th:src="${card.smallImage}" width="300">
+    <form th:action="${ '/auction-sell/' + card.id}" method="post">
+<!--        <input th:value="${card.id}" type="hidden" th:name="id">-->
+
+
+<!--        <input class="form-control"-->
+<!--               type="text"-->
+<!--               th:value="${auction.cardId}" id="id" name="id" />-->
+        <label th:text="${card.id}"></label>
+        <label>amount of cards to sell</label>
+        <br>
+        <input th:type="number" th:field="${auction.amount}">
+        <br>
+        <label>set price</label>
+        <br>
+        <input th:type="number" th:field="${auction.priceForOne}">
+        <button type="submit">Sell</button>
+    </form>
+</div>
+
+<div>
+    <label></label>
+</div>
+
+</body>
+</html>
+<!--
+
+<div th:each="card : ${cards}">
+    <div th:text="${card.name}"></div>
+    <img th:src="${card.smallImage}" width="300">
+    <form action="/auction-sell" method="post" th:object="${auction}">
+        <input th:value="${card.id}" th:type="hidden" th:field="*{cardId}">
+        <label th:text="${card.id}"></label>
+        <label>amount of cards to sell</label>
+        <br>
+        <input th:type="number" th:field="*{amount}">
+        <br>
+        <label>set price</label>
+        <br>
+        <input th:type="number" th:field="*{priceForOne}">
+        <button type="submit">Sell</button>
+    </form>
+</div>-->

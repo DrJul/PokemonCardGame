@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>register page</title>
+</head>
+<body>
+register
+
+<div th:text="${errorMessage}"></div>
+
+<form action="/register" method="post">
+    <div>
+        <label>name</label>
+        <input type="email" name="email">
+        <br>
+        <label>password</label>
+        <input type="password" name="password">
+        <br>
+        <label>repeat password</label>
+        <input type="password" name="repeatedPassword">
+        <br>
+        <button type="submit">Register user</button>
+    </div>
+</form>
+<br>
+<button type="button"><a href="/">Main Page</a></button>
+</body>
+</html>

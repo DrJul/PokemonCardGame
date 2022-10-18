@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>shop</title>
+</head>
+<body>
+<label>Shop</label>
+
+<div>
+    <form action="/shop/buy" method="post">
+    <label>buy 5 cards for 10 coins</label>
+    <button type="submit">Buy cards</button>
+    </form>
+
+    <div th:each="card : ${cards}">
+        <div th:text="${card.name}"></div>
+        <img th:src="${card.smallImage}" width="300">
+    </div>
+</div>
+</body>
+</html>

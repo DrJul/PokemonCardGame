@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>TCG</title>
+</head>
+<body>
+Welcome
+<a href="/register">register</a>
+<br>
+<a href="/login">log in</a>
+<br>
+<span sec:authorize="isAuthenticated()">User</span>
+<br>
+<label>User Panel</label>
+<!--<div th:if="${session.isLogged() == true}">-->
+<div sec:authorize="isAuthenticated()">
+    <a href="/user">User Account</a>
+    <a href="/shop">Shop</a>
+    <a href="/auction-buy">Buy cards on auction</a>
+    <a href="/auction-sell">Sell cards on auction</a>
+</div>
+
+</body>
+</html>
