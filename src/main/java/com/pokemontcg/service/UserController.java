@@ -13,13 +13,15 @@ import java.util.List;
 @AllArgsConstructor
 @Controller
 public class UserController {
-    private UserLoginService userLoginService;
+    private TrenerService trenerService;
 
     @GetMapping
     public String getUserAccount(Model model){
-        List<CardDto> cards = userLoginService.getUserCards();
+        List<CardDto> cards = trenerService.getTrenerCardDtos();
+        int coins = trenerService.getTrenerCoins();
         System.out.println(cards);
         model.addAttribute("cards", cards);
+        model.addAttribute("coins", coins);
         return "user";
     }
 }

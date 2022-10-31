@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>shop</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 <body>
+<button type="button"><a href="/user">User Account</a></button>
+<button type="button"><a href="/">Main Page</a></button>
+<br>
+<label> ---------- </label>
+<br>
 <label>Shop</label>
-
 <div>
     <form action="/shop/buy" method="post">
     <label>buy 5 cards for 10 coins</label>
@@ -18,5 +23,6 @@
         <img th:src="${card.smallImage}" width="300">
     </div>
 </div>
+
 </body>
 </html>

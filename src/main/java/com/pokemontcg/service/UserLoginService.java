@@ -2,6 +2,7 @@ package com.pokemontcg.service;
 
 import com.pokemontcg.dto.CardDto;
 import com.pokemontcg.dto.UserLoginDto;
+import com.pokemontcg.entity.TrenerEntity;
 import com.pokemontcg.entity.UserEntity;
 import com.pokemontcg.exception.LoginServiceException;
 import com.pokemontcg.mapper.CardMapper;
@@ -52,10 +53,18 @@ public class UserLoginService {
         return session.isLogged();
     }
 
-    public List<CardDto> getUserCards(){
-        return session.getUser().getCards().stream()
-                .map((card)-> cardMapper.toCardDto(card))
-                .collect(Collectors.toList());
+    public TrenerEntity getLoggedTrener(){
+        return getLoggedUser().getTrener();
     }
+
+//    public List<CardDto> getUserCards(){
+//        return session.getUser().getCards().stream()
+//                .map((card)-> cardMapper.toCardDto(card))
+//                .collect(Collectors.toList());
+//    }
+//
+//    public int getUserCoins(){
+//        return session.getUser().getCoins();
+//    }
 
 }

@@ -21,12 +21,6 @@ public class UserEntity {
     private String password;
     @OneToOne
     private TrenerEntity trener;
-    @ManyToMany
-    private List<CardEntity> cards;
-
-    public void removeCard(CardEntity cardToRemove){
-        cards.remove(cardToRemove);
-    }
 
 
 }

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 @RequestMapping("/auction-sell")
@@ -20,7 +21,7 @@ public class AuctionSellController {
 
     @GetMapping
     public String getAuctionSell(Model model){
-        List<CardDto> userCards = userLoginService.getUserCards();
+        List<CardDto> userCards = auctionService.sellAuctionData();
         AuctionDto auctionDto = new AuctionDto();
         model.addAttribute("cards", userCards);
         model.addAttribute("auction", auctionDto);

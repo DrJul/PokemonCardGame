@@ -2,9 +2,11 @@ package com.pokemontcg.service;
 
 import com.pokemontcg.dto.CardDto;
 import com.pokemontcg.entity.CardEntity;
+import com.pokemontcg.entity.TrenerEntity;
 import com.pokemontcg.entity.UserEntity;
 import com.pokemontcg.mapper.CardMapper;
 import com.pokemontcg.repository.CardRepository;
+import com.pokemontcg.repository.TrenerRepository;
 import com.pokemontcg.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,7 @@ public class ShopService {
     private CardMapper cardMapper;
     private UserLoginService userLoginService;
     private UserRepository userRepository;
+    private TrenerRepository trenerRepository;
 
     public List<CardDto> buyCars(){
         Random random = new Random();
@@ -35,9 +38,9 @@ public class ShopService {
             shuffledCards.add(card);
         }
         UserEntity loggedUser = userLoginService.getLoggedUser();
-        List<CardEntity> currentCards = loggedUser.getCards();
-        currentCards.addAll(shuffledCards);
-        userRepository.save(loggedUser);
+        TrenerEntity trener = loggedUser.getTrener();
+        trener.addCards(shuffledCards);
+        trenerRepository.save(trener);
         return shuffledCards.stream().map((entity)-> cardMapper.toCardDto(entity)).collect(Collectors.toList());
     }
 }

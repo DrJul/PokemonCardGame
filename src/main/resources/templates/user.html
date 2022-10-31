@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:display="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>User</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 <body>
+<!--<div>-->
+<!--    <label>Current coins: </label>-->
+<!--    <label th:text="${coins}"></label>-->
+<!--    <br>-->
+<!--    <input th:type="number">-->
+<!--    <button>Buy coins</button>-->
+<!--</div>-->
+<br>
 <div>
     <label>User cards</label>
     <div th:each="card : ${cards}">

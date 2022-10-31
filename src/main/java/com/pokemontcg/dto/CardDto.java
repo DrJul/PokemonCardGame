@@ -12,4 +12,5 @@ public class CardDto {
     private String name;
     private String largeImage;
     private String smallImage;
+    private int amount;
 }
