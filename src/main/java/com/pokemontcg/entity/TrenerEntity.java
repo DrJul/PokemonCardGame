@@ -21,11 +21,19 @@ public class TrenerEntity {
         }
     }
 
-    private void addCard(CardEntity newCard) {
-        if(cards.containsKey(newCard)){
-            cards.put(newCard, cards.get(newCard)+1);
+    private void addCard(CardEntity card) {
+        if(cards.containsKey(card)){
+            cards.put(card, cards.get(card)+1);
         } else {
-            cards.put(newCard, 1);
+            cards.put(card, 1);
+        }
+    }
+
+    public void addCard(CardEntity card, int amount) {
+        if(cards.containsKey(card)){
+            cards.put(card, cards.get(card)+ amount);
+        } else {
+            cards.put(card, amount);
         }
     }
 

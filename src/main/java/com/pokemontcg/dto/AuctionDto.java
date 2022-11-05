@@ -11,6 +11,8 @@ import lombok.*;
 public class AuctionDto {
     private long id;
     private String cardId;
+    private String cardName;
+    private String smallImage;
     private long userId;
     private int amount;
     private double priceForOne;

@@ -9,8 +9,11 @@ import com.pokemontcg.exception.UserNotFoundException;
 import com.pokemontcg.repository.CardRepository;
 import com.pokemontcg.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Component
@@ -23,6 +26,8 @@ public class AuctionMapper {
                 .id(auctionEntity.getId())
                 .userId(auctionEntity.getUser().getId())
                 .cardId(auctionEntity.getCardToSell().getId())
+                .cardName(auctionEntity.getCardToSell().getName())
+                .smallImage(auctionEntity.getCardToSell().getSmallImage())
                 .amount(auctionEntity.getAmount())
                 .priceForOne(auctionEntity.getPriceForOne())
                 .build();
@@ -36,6 +41,12 @@ public class AuctionMapper {
                 .amount(auctionDto.getAmount())
                 .priceForOne(auctionDto.getPriceForOne())
                 .build();
+    }
+
+    public List<AuctionDto> toAuctionDtos(List<AuctionEntity> auctionEntityList){
+        return auctionEntityList.stream()
+                .map(this::toAuctionDto)
+                .collect(Collectors.toList());
     }
 
     private CardEntity getCard(String cardId) {

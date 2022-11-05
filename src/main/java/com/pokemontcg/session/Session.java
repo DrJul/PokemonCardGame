@@ -23,7 +23,7 @@ public class Session {
     }
 
     public boolean isLogged(){
-        return lastLoginTime.plusSeconds(60).isAfter(LocalDateTime.now());
+        return lastLoginTime.plusSeconds(360).isAfter(LocalDateTime.now());
     }
 
 

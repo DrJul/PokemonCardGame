@@ -8,5 +8,19 @@
 <body>
 <label>Buy cards</label>
 
+    <div th:each="auction : ${auctions}">
+        <label>Auction nr:  </label>
+        <div th:text="${auction.id}"></div>
+        <br>
+        <label>cards to buy</label>
+        <div th:text="${auction.cardName}"></div>
+        <img th:src="${auction.smallImage}" height="400">
+        <br>
+        <form method="post" th:action="'/auction-buy/' + ${auction.id}">
+        <button type="submit" >Buy</button>
+        </form>
+        <label>------</label>
+        <br>
+    </div>
 </body>
 </html>
