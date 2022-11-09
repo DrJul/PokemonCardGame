@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -23,5 +24,11 @@ public class UserController {
         model.addAttribute("cards", cards);
         model.addAttribute("coins", coins);
         return "user";
+    }
+
+    @PostMapping
+    public String buyCoins(int buyedCoins){
+        trenerService.addCoinsToUser(buyedCoins);
+        return "redirect:/user";
     }
 }

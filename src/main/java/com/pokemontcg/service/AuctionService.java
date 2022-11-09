@@ -60,8 +60,11 @@ public class AuctionService {
         AuctionEntity auction = auctionRepository.findById(auctionId).orElseThrow(()-> new AuctionNotFoundException("Auction not found"));
         CardEntity buyedCard = auction.getCardToSell();
         int amount = auction.getAmount();
-        trener.addCard(buyedCard, amount);
-        trenerRepository.save(trener);
-        auctionRepository.deleteById(auctionId);
+        if(trener.getCoins() >= auction.getPriceForOne()){
+            trener.addCard(buyedCard, amount);
+            trener.removeCoins((int) auction.getPriceForOne());
+            trenerRepository.save(trener);
+            auctionRepository.deleteById(auctionId);
+        }
     }
 }

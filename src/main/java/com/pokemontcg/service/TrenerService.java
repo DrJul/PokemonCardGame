@@ -3,6 +3,7 @@ package com.pokemontcg.service;
 import com.pokemontcg.dto.CardDto;
 import com.pokemontcg.entity.CardEntity;
 import com.pokemontcg.entity.TrenerEntity;
+import com.pokemontcg.repository.TrenerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class TrenerService {
     private UserLoginService userLoginService;
+    private TrenerRepository trenerRepository;
 
     public List<CardDto> getTrenerCardDtos(){
         TrenerEntity trener = userLoginService.getLoggedTrener();
@@ -31,5 +33,11 @@ public class TrenerService {
 
     public int getTrenerCoins(){
         return userLoginService.getLoggedTrener().getCoins();
+    }
+
+    public void addCoinsToUser(int coinsToAdd){
+        TrenerEntity trener = userLoginService.getLoggedTrener();
+        trener.addCoins(coinsToAdd);
+        trenerRepository.save(trener);
     }
 }

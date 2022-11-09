@@ -12,6 +12,9 @@
         <label>Auction nr:  </label>
         <div th:text="${auction.id}"></div>
         <br>
+        <label>Price: </label>
+        <div th:text="${auction.priceForOne}"></div>
+        <br>
         <label>cards to buy</label>
         <div th:text="${auction.cardName}"></div>
         <img th:src="${auction.smallImage}" height="400">

@@ -6,13 +6,15 @@
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 <body>
-<!--<div>-->
-<!--    <label>Current coins: </label>-->
-<!--    <label th:text="${coins}"></label>-->
-<!--    <br>-->
-<!--    <input th:type="number">-->
-<!--    <button>Buy coins</button>-->
-<!--</div>-->
+<div>
+    <label>Current coins: </label>
+    <label th:text="${coins}"></label>
+    <br>
+    <form method="post">
+        <input th:type="number" name="buyedCoins">
+        <button type="submit">Buy coins</button>
+    </form>
+</div>
 <br>
 <div>
     <label>User cards</label>

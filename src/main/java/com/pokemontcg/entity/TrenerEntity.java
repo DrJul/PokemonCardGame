@@ -43,4 +43,16 @@ public class TrenerEntity {
         }
     }
 
+    public void addCoins(int coinsToAdd){
+        if (coinsToAdd > 0){
+            this.coins += coinsToAdd;
+        }
+    }
+
+    public void removeCoins(int coinsToRemove){
+        if(coinsToRemove >= 0){
+            this.coins -= coinsToRemove;
+        }
+    }
+
 }
