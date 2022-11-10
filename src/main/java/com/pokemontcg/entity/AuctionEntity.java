@@ -20,5 +20,5 @@ public class AuctionEntity {
     @ManyToOne
     private CardEntity cardToSell;
     private int amount;
-    private double priceForOne;
+    private double price;
 }

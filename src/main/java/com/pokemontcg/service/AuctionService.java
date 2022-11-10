@@ -15,7 +15,6 @@ import com.pokemontcg.repository.TrenerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -60,10 +59,16 @@ public class AuctionService {
         AuctionEntity auction = auctionRepository.findById(auctionId).orElseThrow(()-> new AuctionNotFoundException("Auction not found"));
         CardEntity buyedCard = auction.getCardToSell();
         int amount = auction.getAmount();
-        if(trener.getCoins() >= auction.getPriceForOne()){
+        if(trener.getCoins() >= auction.getPrice()){
             trener.addCard(buyedCard, amount);
-            trener.removeCoins((int) auction.getPriceForOne());
+            trener.removeCoins((int) auction.getPrice());
             trenerRepository.save(trener);
+
+            UserEntity seller = auction.getUser();
+            TrenerEntity sellerTrainer = seller.getTrener();
+            sellerTrainer.removeCard(buyedCard, amount);
+            trenerRepository.save(sellerTrainer);
+
             auctionRepository.deleteById(auctionId);
         }
     }

@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -29,7 +28,7 @@ public class AuctionMapper {
                 .cardName(auctionEntity.getCardToSell().getName())
                 .smallImage(auctionEntity.getCardToSell().getSmallImage())
                 .amount(auctionEntity.getAmount())
-                .priceForOne(auctionEntity.getPriceForOne())
+                .priceForOne(auctionEntity.getPrice())
                 .build();
     }
 
@@ -39,7 +38,7 @@ public class AuctionMapper {
                 .user(auctionDto.getUserId() == 0? null: getUser(auctionDto.getUserId()))
                 .cardToSell(getCard(auctionDto.getCardId()))
                 .amount(auctionDto.getAmount())
-                .priceForOne(auctionDto.getPriceForOne())
+                .price(auctionDto.getPriceForOne())
                 .build();
     }
 
